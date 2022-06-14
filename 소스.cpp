@@ -4,9 +4,11 @@ using namespace std;
 
 int main()
 {
-	string s;
+	int y;
 
-	cin >> s;
+	cin >> y;
 
-	cout << s << "??!" << endl;
+	if (y >= 1000 && y <= 3000) {
+		cout << y - 543 << endl;
+	}
 }

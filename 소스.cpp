@@ -4,11 +4,10 @@ using namespace std;
 
 int main()
 {
-	int y;
-
-	cin >> y;
-
-	if (y >= 1000 && y <= 3000) {
-		cout << y - 543 << endl;
-	}
+	cout << "         ,r\'\"7" << endl;
+	cout << "r`-_   ,'  ,\/" << endl;
+	cout << " \\. \".L_r\'" << endl;
+	cout << "   `~\\\/" << endl;
+	cout << "      |" << endl;
+	cout << "      |" << endl;
 }

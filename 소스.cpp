@@ -4,24 +4,41 @@ using namespace std;
 
 int main()
 {
-	int h{};
-	int m{};
-	int time{};
+	int x{};
+	int y{};
+	int z{};
 
-	cin >> h >> m;
-	cin >> time;
+	int result[6]{};
 
-	h += time / 60;
-	m += time % 60;
+	cin >> x >> y >> z;
 
-	if (m >= 60) {
-		m -= 60;
-		h += 1;
+	result[x - 1]++;
+	result[y - 1]++;
+	result[z - 1]++;
+
+	int complete{};
+
+	for (int i{}; i < 6; ++i) {
+		if (result[i] == 3) {
+			cout << 10000 + (i + 1) * 1000 << endl;
+			complete = 1;
+			break;
+		}
+
+		else if (result[i] == 2) {
+			cout << 1000 + (i + 1) * 100 << endl;
+			complete = 1;
+			break;
+		}
 	}
 
-	if (h >= 24) {
-		h -= 24;
+	if (complete == 0) {
+		for (int i = 5; i >= 0; --i) {
+			if (result[i] != 0) {
+				cout << (i + 1) * 100 << endl;
+				complete = 1;
+				break;
+			}
+		}
 	}
-
-	cout << h << " " << m << endl;
 }

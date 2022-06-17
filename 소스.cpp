@@ -4,23 +4,30 @@ using namespace std;
 
 int main()
 {
-	int num[10]{};
-	int num2[42]{};
-	int result{};
+	double N{};
+	
+	cin >> N;
 
-	for (int i{}; i < 10; ++i) {
-		cin >> num[i];
+	double score[1000]{};
+
+	for (int i{}; i < N; ++i) {
+		cin >> score[i];
 	}
 
-	for (int i{}; i < 10; ++i) {
-		num2[num[i] % 42]++;
-	}
+	double max{};
 
-	for (int i{}; i < 42; ++i) {
-		if (num2[i] != 0) {
-			result++;
+	for (int i{}; i < N; ++i) {
+		if (score[i] >= max) {
+			max = score[i];
 		}
 	}
 
-	cout << result << endl;
+	double sum{};
+
+	for (int i{}; i < N; ++i) {
+		score[i] = score[i] / max * 100;
+		sum += score[i];
+	}
+
+	cout << sum / N << endl;
 }

@@ -4,41 +4,23 @@ using namespace std;
 
 int main()
 {
-	int x{};
-	int y{};
-	int z{};
+	int num[10]{};
+	int num2[42]{};
+	int result{};
 
-	int result[6]{};
+	for (int i{}; i < 10; ++i) {
+		cin >> num[i];
+	}
 
-	cin >> x >> y >> z;
+	for (int i{}; i < 10; ++i) {
+		num2[num[i] % 42]++;
+	}
 
-	result[x - 1]++;
-	result[y - 1]++;
-	result[z - 1]++;
-
-	int complete{};
-
-	for (int i{}; i < 6; ++i) {
-		if (result[i] == 3) {
-			cout << 10000 + (i + 1) * 1000 << endl;
-			complete = 1;
-			break;
-		}
-
-		else if (result[i] == 2) {
-			cout << 1000 + (i + 1) * 100 << endl;
-			complete = 1;
-			break;
+	for (int i{}; i < 42; ++i) {
+		if (num2[i] != 0) {
+			result++;
 		}
 	}
 
-	if (complete == 0) {
-		for (int i = 5; i >= 0; --i) {
-			if (result[i] != 0) {
-				cout << (i + 1) * 100 << endl;
-				complete = 1;
-				break;
-			}
-		}
-	}
+	cout << result << endl;
 }

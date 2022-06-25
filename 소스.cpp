@@ -1,44 +1,13 @@
-#include <iostream>
+#include <vector>
 
-using namespace std;
+long long sum(std::vector<int>& a);
 
-int main()
-{
-	int num{};
-	cin >> num;
+long long sum(std::vector<int>& a) {
+	long long ans = 0;
 
-	float studentNum[100]{};
-	float data[1000]{};
-	float sum{};
-	float avg[1000]{};
-	float goodScore{};
-	float result[1000]{};
-	
-	for (int i{}; i < num; ++i) {
-		cin >> studentNum[i];
-		sum = 0;
-		goodScore = 0;
-
-		for (int j{}; j < studentNum[i]; ++j) {
-			cin >> data[j];
-			sum += data[j];
-		}
-
-		avg[i] = sum / studentNum[i];
-
-		for (int j{}; j < studentNum[i]; ++j) {
-			if (data[j] > avg[i]) {
-				goodScore += 1.0f;
-			}
-		}
-
-		result[i] = (goodScore * 100.0f) / studentNum[i];
+	for (int i{}; i < a.size(); ++i) {
+		ans += a[i];
 	}
 
-	cout << fixed;
-	cout.precision(3);
-
-	for (int i{}; i < num; ++i) {
-		cout << result[i] << "%" << endl;
-	}
+	return ans;
 }

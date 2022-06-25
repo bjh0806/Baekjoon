@@ -7,32 +7,38 @@ int main()
 	int num{};
 	cin >> num;
 
-	string answer[100]{};
-	int result[100]{};
-
+	float studentNum[100]{};
+	float data[1000]{};
+	float sum{};
+	float avg[1000]{};
+	float goodScore{};
+	float result[1000]{};
+	
 	for (int i{}; i < num; ++i) {
-		cin >> answer[i];
-		int Onum{};
-		for (int j{}; j < answer[i].size(); ++j) {
-			if (answer[i][j] == 'O') {
-				Onum++;
-			}
+		cin >> studentNum[i];
+		sum = 0;
+		goodScore = 0;
 
-			else if (answer[i][j] == 'X') {
-				while (Onum != 0) {
-					result[i] += Onum;
-					Onum -= 1;
-				}
+		for (int j{}; j < studentNum[i]; ++j) {
+			cin >> data[j];
+			sum += data[j];
+		}
+
+		avg[i] = sum / studentNum[i];
+
+		for (int j{}; j < studentNum[i]; ++j) {
+			if (data[j] > avg[i]) {
+				goodScore += 1.0f;
 			}
 		}
 
-		while (Onum != 0) {
-			result[i] += Onum;
-			Onum -= 1;
-		}
+		result[i] = (goodScore * 100.0f) / studentNum[i];
 	}
 
+	cout << fixed;
+	cout.precision(3);
+
 	for (int i{}; i < num; ++i) {
-		cout << result[i] << endl;
+		cout << result[i] << "%" << endl;
 	}
 }

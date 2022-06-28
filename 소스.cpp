@@ -1,13 +1,35 @@
-#include <vector>
+#include <iostream>
 
-long long sum(std::vector<int>& a);
+using namespace std;
 
-long long sum(std::vector<int>& a) {
-	long long ans = 0;
+void SelfNum()
+{
+	int n = 1;
+	int SN[10001]{};
+	int N = 1;
 
-	for (int i{}; i < a.size(); ++i) {
-		ans += a[i];
+	while (n <= 10000) {
+		N = n;
+
+		while (N <= 10000) {
+			N = N + N / 1000 + N % 1000 / 100 + N % 1000 % 100 / 10 + N % 1000 % 100 % 10;
+
+			if (N <= 10000 && SN[N] != 1) {
+				SN[N] = 1;
+			}
+		}
+
+		n++;
 	}
 
-	return ans;
+	for (int i = 1; i <= 10000; ++i) {
+		if (SN[i] != 1) {
+			cout << i << endl;
+		}
+	}
+}
+
+int main()
+{
+	SelfNum();
 }

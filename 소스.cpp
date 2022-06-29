@@ -2,34 +2,34 @@
 
 using namespace std;
 
-void SelfNum()
+int CountNum(int n)
 {
-	int n = 1;
-	int SN[10001]{};
-	int N = 1;
+	int result = 0;
+	int N = 100;
 
-	while (n <= 10000) {
-		N = n;
+	if (n < 100) {
+		result = n;
+	}
 
-		while (N <= 10000) {
-			N = N + N / 1000 + N % 1000 / 100 + N % 1000 % 100 / 10 + N % 1000 % 100 % 10;
+	else {
+		result += 99;
 
-			if (N <= 10000 && SN[N] != 1) {
-				SN[N] = 1;
+		while (N <= n) {
+			if ((N / 100 - N % 100 / 10) == (N % 100 / 10 - N % 100 % 10)) {
+				result++;
 			}
-		}
 
-		n++;
-	}
-
-	for (int i = 1; i <= 10000; ++i) {
-		if (SN[i] != 1) {
-			cout << i << endl;
+			N++;
 		}
 	}
+
+	return result;
 }
 
 int main()
 {
-	SelfNum();
+	int n;
+	cin >> n;
+
+	cout << CountNum(n) << endl;
 }

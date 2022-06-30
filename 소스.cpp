@@ -2,34 +2,24 @@
 
 using namespace std;
 
-int CountNum(int n)
+int main()
 {
-	int result = 0;
-	int N = 100;
+	char c{};
+	cin >> c;
 
-	if (n < 100) {
-		result = n;
+	int result{};
+
+	if (isupper(c)) {
+		result = 65 + (c - 'A');
+	}
+
+	else if (islower(c)) {
+		result = 97 + (c - 'a');
 	}
 
 	else {
-		result += 99;
-
-		while (N <= n) {
-			if ((N / 100 - N % 100 / 10) == (N % 100 / 10 - N % 100 % 10)) {
-				result++;
-			}
-
-			N++;
-		}
+		result = 48 + (c - '0');
 	}
 
-	return result;
-}
-
-int main()
-{
-	int n;
-	cin >> n;
-
-	cout << CountNum(n) << endl;
+	cout << result << endl;
 }

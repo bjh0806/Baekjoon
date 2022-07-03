@@ -4,21 +4,16 @@ using namespace std;
 
 int main()
 {
-	char c{};
+	int c{};
 	cin >> c;
+
+	string s{};
+	cin >> s;
 
 	int result{};
 
-	if (isupper(c)) {
-		result = 65 + (c - 'A');
-	}
-
-	else if (islower(c)) {
-		result = 97 + (c - 'a');
-	}
-
-	else {
-		result = 48 + (c - '0');
+	for (int i{}; i < c; ++i) {
+		result += (s[i] - 48);
 	}
 
 	cout << result << endl;

@@ -4,17 +4,22 @@ using namespace std;
 
 int main()
 {
-	int c{};
-	cin >> c;
-
 	string s{};
 	cin >> s;
 
-	int result{};
+	int position[26]{};
 
-	for (int i{}; i < c; ++i) {
-		result += (s[i] - 48);
+	for (int i{}; i < 26; ++i) {
+		position[i] = -1;
 	}
 
-	cout << result << endl;
+	for (int i{}; i < s.size(); ++i) {
+		if (position[s[i] - 97] == -1) {
+			position[s[i] - 97] = i;
+		}
+	}
+
+	for (int i{}; i < 26; ++i) {
+		cout << position[i] << " ";
+	}
 }

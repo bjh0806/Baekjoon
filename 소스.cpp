@@ -4,22 +4,27 @@ using namespace std;
 
 int main()
 {
-	string s{};
-	cin >> s;
+	int T{};
+	cin >> T;
 
-	int position[26]{};
+	int R[1000]{};
+	string S[1000]{};
+	string result[1000]{};
 
-	for (int i{}; i < 26; ++i) {
-		position[i] = -1;
+	for (int i{}; i < T; ++i) {
+		cin >> R[i];
+		cin >> S[i];
 	}
 
-	for (int i{}; i < s.size(); ++i) {
-		if (position[s[i] - 97] == -1) {
-			position[s[i] - 97] = i;
+	for (int i{}; i < T; ++i) {
+		for (int j{}; j < S[i].size(); ++j) {
+			for (int k{}; k < R[i]; ++k) {
+				result[i] += S[i][j];
+			}
 		}
 	}
 
-	for (int i{}; i < 26; ++i) {
-		cout << position[i] << " ";
+	for (int i{}; i < T; ++i) {
+		cout << result[i] << endl;
 	}
 }

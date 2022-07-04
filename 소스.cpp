@@ -4,27 +4,42 @@ using namespace std;
 
 int main()
 {
-	int T{};
-	cin >> T;
+	string s{};
+	cin >> s;
 
-	int R[1000]{};
-	string S[1000]{};
-	string result[1000]{};
+	int alpha[26]{};
 
-	for (int i{}; i < T; ++i) {
-		cin >> R[i];
-		cin >> S[i];
+	for (int i{}; i < s.size(); ++i) {
+		s[i] = toupper(s[i]);
 	}
 
-	for (int i{}; i < T; ++i) {
-		for (int j{}; j < S[i].size(); ++j) {
-			for (int k{}; k < R[i]; ++k) {
-				result[i] += S[i][j];
-			}
+	for (int i{}; i < s.size(); ++i) {
+		alpha[s[i] - 65]++;
+	}
+
+	int max{};
+	int same{};
+
+	for (int i{}; i < 26; ++i) {
+		if (alpha[i] > max) {
+			max = alpha[i];
+			same = 0;
+		}
+
+		else if (alpha[i] == max) {
+			same++;
 		}
 	}
 
-	for (int i{}; i < T; ++i) {
-		cout << result[i] << endl;
+	if (same != 0) {
+		cout << "?" << endl;
+	}
+
+	else {
+		for (int i{}; i < 26; ++i) {
+			if (alpha[i] == max) {
+				cout << char(i + 65) << endl;
+			}
+		}
 	}
 }

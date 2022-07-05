@@ -1,45 +1,28 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main()
 {
 	string s{};
-	cin >> s;
+	getline(cin, s);
 
-	int alpha[26]{};
-
-	for (int i{}; i < s.size(); ++i) {
-		s[i] = toupper(s[i]);
-	}
+	int count{};
 
 	for (int i{}; i < s.size(); ++i) {
-		alpha[s[i] - 65]++;
-	}
-
-	int max{};
-	int same{};
-
-	for (int i{}; i < 26; ++i) {
-		if (alpha[i] > max) {
-			max = alpha[i];
-			same = 0;
-		}
-
-		else if (alpha[i] == max) {
-			same++;
+		if (isspace(s[i])) {
+			count++;
 		}
 	}
 
-	if (same != 0) {
-		cout << "?" << endl;
+	if (isspace(s[0])) {
+		count--;
 	}
 
-	else {
-		for (int i{}; i < 26; ++i) {
-			if (alpha[i] == max) {
-				cout << char(i + 65) << endl;
-			}
-		}
+	if (isspace(s[s.size() - 1])) {
+		count--;
 	}
+
+	cout << count + 1 << endl;
 }

@@ -4,28 +4,70 @@ using namespace std;
 
 int main()
 {
-	string word{};
-	cin >> word;
+	string s{};
+	cin >> s;
 
-	int result{};
+	int num{};
+	int count{};
 
-	for (int i{}; i < word.size(); ++i) {
-		if (word[i] <= 'O') {
-			result += ((word[i] - 65) / 3 + 3);
+	while (num != s.size()) {
+		if (s[num] == 'c') {
+			if (s[num + 1] == '=' || s[num + 1] == '-') {
+				count++;
+				num += 2;
+				continue;
+			}
 		}
 
-		else if (word[i] <= 'S') {
-			result += ((word[i] - 80) / 4 + 8);
+		else if (s[num] == 'd') {
+			if (s[num + 1] == 'z' && s[num + 2] == '=') {
+				count++;
+				num += 3;
+				continue;
+			}
+
+			else if (s[num + 1] == '-') {
+				count++;
+				num += 2;
+				continue;
+			}
 		}
 
-		else if (word[i] <= 'V') {
-			result += ((word[i] - 84) / 3 + 9);
+		else if (s[num] == 'l') {
+			if (s[num + 1] == 'j') {
+				count++;
+				num += 2;
+				continue;
+			}
 		}
 
-		else {
-			result += 10;
+		else if (s[num] == 'n') {
+			if (s[num + 1] == 'j') {
+				count++;
+				num += 2;
+				continue;
+			}
 		}
+
+		else if (s[num] == 's') {
+			if (s[num + 1] == '=') {
+				count++;
+				num += 2;
+				continue;
+			}
+		}
+
+		else if (s[num] == 'z') {
+			if (s[num + 1] == '=') {
+				count++;
+				num += 2;
+				continue;
+			}
+		}
+
+		count++;
+		num++;
 	}
 
-	cout << result << endl;
+	cout << count << endl;
 }

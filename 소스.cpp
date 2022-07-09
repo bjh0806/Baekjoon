@@ -4,69 +4,47 @@ using namespace std;
 
 int main()
 {
-	string s{};
-	cin >> s;
+	int N{};
+	cin >> N;
 
-	int num{};
+	string s[100]{};
+
+	for (int i{}; i < N; ++i) {
+		cin >> s[i];
+	}
+
+	char word[100]{};
 	int count{};
 
-	while (num != s.size()) {
-		if (s[num] == 'c') {
-			if (s[num + 1] == '=' || s[num + 1] == '-') {
-				count++;
-				num += 2;
-				continue;
-			}
+	for (int i{}; i < N; ++i) {
+		for (int j{}; j < 100; ++j) {
+			word[j] = 0;
 		}
 
-		else if (s[num] == 'd') {
-			if (s[num + 1] == 'z' && s[num + 2] == '=') {
-				count++;
-				num += 3;
-				continue;
+		int num{};
+		int stop{};
+
+		while (num < s[i].size()) {
+			word[num] = s[i][num];
+			
+			if (s[i][num - 1] != s[i][num]) {
+				for (int k{}; k < num; ++k) {
+					if (word[k] == word[num]) {
+						stop = 1;
+					}
+				}
 			}
 
-			else if (s[num + 1] == '-') {
-				count++;
-				num += 2;
-				continue;
+			if (stop == 1) {
+				break;
 			}
-		}
 
-		else if (s[num] == 'l') {
-			if (s[num + 1] == 'j') {
-				count++;
-				num += 2;
-				continue;
-			}
-		}
+			num++;
 
-		else if (s[num] == 'n') {
-			if (s[num + 1] == 'j') {
+			if (num == s[i].size()) {
 				count++;
-				num += 2;
-				continue;
 			}
 		}
-
-		else if (s[num] == 's') {
-			if (s[num + 1] == '=') {
-				count++;
-				num += 2;
-				continue;
-			}
-		}
-
-		else if (s[num] == 'z') {
-			if (s[num + 1] == '=') {
-				count++;
-				num += 2;
-				continue;
-			}
-		}
-
-		count++;
-		num++;
 	}
 
 	cout << count << endl;

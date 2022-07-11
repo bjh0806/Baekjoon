@@ -4,48 +4,23 @@ using namespace std;
 
 int main()
 {
-	int N{};
-	cin >> N;
+	long long A{};
+	long long B{};
+	long long C{};
 
-	string s[100]{};
+	cin >> A;
+	cin >> B;
+	cin >> C;
 
-	for (int i{}; i < N; ++i) {
-		cin >> s[i];
+	long long num{};
+
+	if (B >= C) {
+		num = -1;
 	}
 
-	char word[100]{};
-	int count{};
-
-	for (int i{}; i < N; ++i) {
-		for (int j{}; j < 100; ++j) {
-			word[j] = 0;
-		}
-
-		int num{};
-		int stop{};
-
-		while (num < s[i].size()) {
-			word[num] = s[i][num];
-			
-			if (s[i][num - 1] != s[i][num]) {
-				for (int k{}; k < num; ++k) {
-					if (word[k] == word[num]) {
-						stop = 1;
-					}
-				}
-			}
-
-			if (stop == 1) {
-				break;
-			}
-
-			num++;
-
-			if (num == s[i].size()) {
-				count++;
-			}
-		}
+	else {
+		num = A / (C - B) + 1;
 	}
 
-	cout << count << endl;
+	cout << num << endl;
 }

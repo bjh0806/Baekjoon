@@ -1,26 +1,24 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-	long long A{};
-	long long B{};
-	long long C{};
-
-	cin >> A;
-	cin >> B;
-	cin >> C;
-
 	long long num{};
+	cin >> num;
 
-	if (B >= C) {
-		num = -1;
+	long long count = 1;
+
+	while (1) {
+		if ((3 * pow(count, 2) - 3 * count + 1) >= num) {
+			break;
+		}
+
+		else {
+			count++;
+		}
 	}
 
-	else {
-		num = A / (C - B) + 1;
-	}
-
-	cout << num << endl;
+	cout << count << endl;
 }

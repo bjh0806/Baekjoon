@@ -10,22 +10,23 @@ int main()
 
 	cin >> A >> B >> V;
 
-	long long num = 1;
-	long long result{};
+	long long num = V / (A - B) + 1;
+	long long result = A * num - B * num;
 
 	while (1) {
-		if (result + A - B >= V) {
-			break;
+		if (result - (A - B) >= V) {
+			result -= (A - B);
+			num--;
 		}
 
 		else {
-			if (result + A >= V) {
-				break;
+			if (result - A + 2 * B >= V) {
+				result -= (A - B);
+				num--;
 			}
 
 			else {
-				result += (A - B);
-				num++;
+				break;
 			}
 		}
 	}

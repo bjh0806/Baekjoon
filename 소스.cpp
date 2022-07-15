@@ -4,32 +4,38 @@ using namespace std;
 
 int main()
 {
-	long long A{};
-	long long B{};
-	long long V{};
+	int T{};
+	cin >> T;
 
-	cin >> A >> B >> V;
+	int H[100]{};
+	int W[100]{};
+	long long N[10000];
 
-	long long num = V / (A - B) + 1;
-	long long result = A * num - B * num;
+	for (int i{}; i < T; ++i) {
+		cin >> H[i] >> W[i] >> N[i];
+	}
 
-	while (1) {
-		if (result - (A - B) >= V) {
-			result -= (A - B);
-			num--;
-		}
+	int x[100]{};
+	int y[100]{};
 
-		else {
-			if (result - A + 2 * B >= V) {
-				result -= (A - B);
-				num--;
+	for (int i{}; i < T; ++i) {
+		if (N[i] % H[i] == 0) {
+			if (N[i] == H[i]) {
+				y[i] = H[i];
 			}
 
 			else {
-				break;
+				y[i] = N[i] / H[i];
 			}
+			
+			x[i] = N[i] / H[i];
 		}
-	}
 
-	cout << num << endl;
+		else {
+			y[i] = N[i] % H[i];
+			x[i] = N[i] / H[i] + 1;
+		}
+
+		cout << y[i] * 100 + x[i] << endl;
+	}
 }

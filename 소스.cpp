@@ -20,14 +20,7 @@ int main()
 
 	for (int i{}; i < T; ++i) {
 		if (N[i] % H[i] == 0) {
-			if (N[i] == H[i]) {
-				y[i] = H[i];
-			}
-
-			else {
-				y[i] = N[i] / H[i];
-			}
-			
+			y[i] = H[i];
 			x[i] = N[i] / H[i];
 		}
 

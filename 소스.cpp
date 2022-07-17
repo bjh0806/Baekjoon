@@ -7,28 +7,32 @@ int main()
 	int T{};
 	cin >> T;
 
-	int H[100]{};
-	int W[100]{};
-	long long N[10000];
-
+	int k[10000]{};
+	int n[10000]{};
+	
 	for (int i{}; i < T; ++i) {
-		cin >> H[i] >> W[i] >> N[i];
+		cin >> k[i] >> n[i];
 	}
 
-	int x[100]{};
-	int y[100]{};
-
 	for (int i{}; i < T; ++i) {
-		if (N[i] % H[i] == 0) {
-			y[i] = H[i];
-			x[i] = N[i] / H[i];
+		int result[10000][15]{};
+
+		for (int j{}; j <= k[i]; ++j) {
+			for (int l = 1; l <= n[i]; ++l) {
+				if (j == 0) {
+					result[0][l] = l;
+				}
+
+				else if (l == 1) {
+					result[j][1] = 1;
+				}
+
+				else {
+					result[j][l] = result[j - 1][l] + result[j][l - 1];
+				}
+			}
 		}
 
-		else {
-			y[i] = N[i] % H[i];
-			x[i] = N[i] / H[i] + 1;
-		}
-
-		cout << y[i] * 100 + x[i] << endl;
+		cout << result[k[i]][n[i]] << endl;
 	}
 }

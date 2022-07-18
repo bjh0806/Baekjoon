@@ -4,35 +4,62 @@ using namespace std;
 
 int main()
 {
-	int T{};
-	cin >> T;
+	int N{};
+	cin >> N;
 
-	int k[10000]{};
-	int n[10000]{};
-	
-	for (int i{}; i < T; ++i) {
-		cin >> k[i] >> n[i];
-	}
+	int count1{};
+	int count2{};
 
-	for (int i{}; i < T; ++i) {
-		int result[10000][15]{};
+	count1 += N / 3;
+	N -= count1 * 3;
 
-		for (int j{}; j <= k[i]; ++j) {
-			for (int l = 1; l <= n[i]; ++l) {
-				if (j == 0) {
-					result[0][l] = l;
+	int count3 = count1;
+
+	if (N != 0) {
+		while (count3 != 0) {
+			if ((N + count3 * 3) % 5 == 0) {
+				count1 -= count3;
+				count2 += (N + count3 * 3) / 5;
+				N += count3 * 3;
+				N -= count2 * 5;
+
+				if (N == 0) {
+					break;
 				}
+			}
 
-				else if (l == 1) {
-					result[j][1] = 1;
-				}
-
-				else {
-					result[j][l] = result[j - 1][l] + result[j][l - 1];
-				}
+			else {
+				count3--;
 			}
 		}
 
-		cout << result[k[i]][n[i]] << endl;
+		if (N != 0) {
+			cout << -1 << endl;
+		}
+
+		else {
+			cout << count1 + count2 << endl;
+		}
+	}
+
+	else {
+		while (count3 != 0) {
+			if ((N + count3 * 3) % 5 == 0) {
+				count1 -= count3;
+				count2 += (N + count3 * 3) / 5;
+				N += count3 * 3;
+				N -= count2 * 5;
+
+				if (N == 0) {
+					break;
+				}
+			}
+
+			else {
+				count3--;
+			}
+		}
+
+		cout << count1 + count2 << endl;
 	}
 }

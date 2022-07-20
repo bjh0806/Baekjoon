@@ -4,67 +4,40 @@ using namespace std;
 
 int main()
 {
-	string A{};
-	string B{};
+	int N{};
+	cin >> N;
 
-	cin >> A >> B;
+	int num[100]{};
 
-	int C[10002]{};
+	for (int i{}; i < N; ++i) {
+		cin >> num[i];
+	}
+
 	int count{};
-	int num{};
-	int up{};
-	int a = A.size() - 1;
-	int b = B.size() - 1;
+	int n = 3;
 
-	if (a >= b) {
-		count = A.size();
-	}
+	for (int i{}; i < N; ++i) {
+		n = 3;
 
-	else {
-		count = B.size();
-	}
-
-	while (num != count) {
-		if (a >= 0 && b >= 0) {
-			C[num] = A[a] - 48 + B[b] - 48;
+		if (num[i] != 1 && num[i] == 2 || num[i] == 3 || num[i] == 5 || num[i] == 7) {
+			count++;
+			continue;
 		}
 
-		else {
-			if (a < 0) {
-				C[num] = B[b] - 48;
-			}
+		else if (num[i] % 2 != 0) {
+			while (n <= num[i] / 2) {
+				if (num[i] % n == 0) {
+					break;
+				}
 
-			else if (b < 0) {
-				C[num] = A[a] - 48;
+				n += 2;
+
+				if (n > num[i] / 2) {
+					count++;
+				}
 			}
 		}
-
-		if (up != 0) {
-			C[num]++;
-			up = 0;
-		}
-
-		if (C[num] >= 10) {
-			C[num] -= 10;
-			up++;
-		}
-
-		num++;
-		a--;
-		b--;
 	}
 
-	if (up != 0) {
-		C[num]++;
-
-		for (int i = num; i >= 0; --i) {
-			cout << C[i];
-		}
-	}
-
-	else {
-		for (int i = num - 1; i >= 0; --i) {
-			cout << C[i];
-		}
-	}
+	cout << count << endl;
 }

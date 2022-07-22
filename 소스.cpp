@@ -4,57 +4,58 @@ using namespace std;
 
 int main()
 {
-	long long N{};
+	int N{};
 	cin >> N;
 
-	long long n[5000001]{};
+	int n[100000]{};
 	int count{};
+	int num{};
 
-	while (N != 1) {
-		int num = 2;
-		int number = 3;
-
-		if (N % num == 0) {
-			n[count] = num;
-			N /= num;
-			count++;
-		}
-
-		while (num <= N / 2) {
-			if (num % number == 0) {
-				num += 2;
-			}
-		}
-	}
-
-	for (int i{}; i <= N; ++i) {
-		num = 3;
-
-		if (i != 1 && i == 2 || i == 3 || i == 5 || i == 7) {
-			count++;
-		}
-
-		else if (i % 2 != 0) {
-			while (n <= i / 2) {
-				if (i % n == 0) {
-					break;
-				}
-
-				n += 2;
-
-				if (n > i / 2) {
-					sum += i;
-					count++;
-				}
-			}
-		}
-	}
-
-	if (count == 0) {
-		cout << -1 << endl;
+	if (N % 2 == 0) {
+		num = 2;
 	}
 
 	else {
-		cout << sum << endl << min << endl;
+		num = 3;
+	}
+
+	int origin = N;
+
+	while (N != 1) {
+		if (N % num == 0) {
+			while (N % num == 0) {
+				n[count] = num;
+				N /= num;
+				count++;
+			}
+		}
+
+		if (num == 2) {
+			num++;
+		}
+
+		else {
+			num += 2;
+
+			while (num <= origin / 2) {
+				if (origin % num == 0) {
+					break;
+				}
+
+				else {
+					num += 2;
+				}
+			}
+		}
+
+		if (num > origin / 2 && N != 1) {
+			n[count] = N;
+			count++;
+			break;
+		}
+	}
+
+	for (int i{}; i < count; ++i) {
+		cout << n[i] << endl;
 	}
 }

@@ -4,58 +4,31 @@ using namespace std;
 
 int main()
 {
+	int M{};
 	int N{};
-	cin >> N;
+	cin >> M >> N;
 
-	int n[100000]{};
-	int count{};
-	int num{};
+	int n = 3;
 
-	if (N % 2 == 0) {
-		num = 2;
-	}
+	for (int i = M; i <= N; ++i) {
+		n = 3;
 
-	else {
-		num = 3;
-	}
-
-	int origin = N;
-
-	while (N != 1) {
-		if (N % num == 0) {
-			while (N % num == 0) {
-				n[count] = num;
-				N /= num;
-				count++;
-			}
+		if (i != 1 && i == 2 || i == 3 || i == 5 || i == 7) {
+			cout << i << endl;
 		}
 
-		if (num == 2) {
-			num++;
-		}
-
-		else {
-			num += 2;
-
-			while (num <= origin / 2) {
-				if (origin % num == 0) {
+		else if (i % 2 != 0) {
+			while (n <= i / 2) {
+				if (i % n == 0) {
 					break;
 				}
 
-				else {
-					num += 2;
+				n += 2;
+
+				if (n > i / 2) {
+					cout << i << endl;
 				}
 			}
 		}
-
-		if (num > origin / 2 && N != 1) {
-			n[count] = N;
-			count++;
-			break;
-		}
-	}
-
-	for (int i{}; i < count; ++i) {
-		cout << n[i] << endl;
 	}
 }

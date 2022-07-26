@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -8,30 +9,23 @@ int main()
 	int N{};
 	cin >> M >> N;
 
-	if (M <= 2) {
-		cout << 2 << endl;
-		M = 3;
-	}
+	for (int i = M; i <= N; ++i) {
+		int n = 2;
 
-	int n = 3;
-
-	for (int i = M; i <= N; i += 2) {
-		n = 3;
-
-		if (i == 3 || i == 5 || i == 7) {
-			cout << i << endl;
+		if (i != 1 && i == 2 || i == 3 || i == 5 || i == 7) {
+			cout << i << '\n';
 		}
 
 		else {
-			while (n <= i / 2) {
+			while (n <= sqrt(i)) {
 				if (i % n == 0) {
 					break;
 				}
 
-				n += 2;
+				n++;
 
-				if (n > i / 2) {
-					cout << i << endl;
+				if (n > sqrt(i)) {
+					cout << i << '\n';
 				}
 			}
 		}

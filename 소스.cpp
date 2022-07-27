@@ -5,29 +5,53 @@ using namespace std;
 
 int main()
 {
-	int M{};
-	int N{};
-	cin >> M >> N;
+	int M[100000]{};
+	int count{};
+	int N[246913]{};
 
-	for (int i = M; i <= N; ++i) {
-		int n = 2;
+	while (1) {
+		cin >> M[count];
 
-		if (i != 1 && i == 2 || i == 3 || i == 5 || i == 7) {
-			cout << i << '\n';
+		if (M[count] == 0) {
+			break;
 		}
 
-		else {
-			while (n <= sqrt(i)) {
-				if (i % n == 0) {
-					break;
-				}
+		count++;
+	}
 
-				n++;
+	int result{};
 
-				if (n > sqrt(i)) {
-					cout << i << '\n';
+	for (int i{}; i < count; ++i) {
+		result = 0;
+
+		for (int j = M[i] + 1; j <= 2 * M[i]; ++j) {
+			if (N[j] == 1) {
+				continue;
+			}
+
+			int n = 3;
+
+			if (j != 1 && j == 2 || j == 3 || j == 5 || j == 7) {
+				result++;
+				N[j] = 1;
+			}
+
+			else if (j % 2 != 0) {
+				while (n <= sqrt(j)) {
+					if (j % n == 0) {
+						break;
+					}
+
+					n += 2;
+
+					if (n > sqrt(j)) {
+						result++;
+						N[j] = 1;
+					}
 				}
 			}
 		}
+
+		cout << result << endl;
 	}
 }

@@ -3,11 +3,12 @@
 
 using namespace std;
 
+int N[246913]{};
+
 int main()
 {
 	int M[100000]{};
 	int count{};
-	int N[246913]{};
 
 	while (1) {
 		cin >> M[count];
@@ -26,6 +27,7 @@ int main()
 
 		for (int j = M[i] + 1; j <= 2 * M[i]; ++j) {
 			if (N[j] == 1) {
+				result++;
 				continue;
 			}
 

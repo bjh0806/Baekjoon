@@ -7,35 +7,22 @@ int N[246913]{};
 
 int main()
 {
-	int M[100000]{};
-	int count{};
-
-	while (1) {
-		cin >> M[count];
-
-		if (M[count] == 0) {
-			break;
-		}
-
-		count++;
+	int T{};
+	int n[10000]{};
+	
+	for (int i{}; i < T; ++i) {
+		cin >> n[i];
 	}
 
-	int result{};
+	int result[2]{};
 
-	for (int i{}; i < count; ++i) {
-		result = 0;
-
-		for (int j = M[i] + 1; j <= 2 * M[i]; ++j) {
-			if (N[j] == 1) {
-				result++;
-				continue;
-			}
-
+	for (int i{}; i < T; ++i) {
+		for (int j = 2; j < n[i]; ++j) {
 			int n = 3;
 
 			if (j != 1 && j == 2 || j == 3 || j == 5 || j == 7) {
-				result++;
-				N[j] = 1;
+				result[0] = j;
+				result[1] = n[i] - j;
 			}
 
 			else if (j % 2 != 0) {

@@ -3,26 +3,37 @@
 
 using namespace std;
 
-int N[246913]{};
-
 int main()
 {
 	int T{};
-	int n[10000]{};
+	int N[10000]{};
+
+	cin >> T;
 	
 	for (int i{}; i < T; ++i) {
-		cin >> n[i];
+		cin >> N[i];
 	}
 
 	int result[2]{};
 
 	for (int i{}; i < T; ++i) {
-		for (int j = 2; j < n[i]; ++j) {
-			int n = 3;
+		for (int j = 2; j < N[i]; ++j) {
+			int n = 2;
 
 			if (j != 1 && j == 2 || j == 3 || j == 5 || j == 7) {
 				result[0] = j;
-				result[1] = n[i] - j;
+				
+				while (n <= sqrt(N[i] - j)) {
+					if (N[i] - j % n == 0) {
+						break;
+					}
+
+					n++;
+
+					if (n > sqrt(N[i] - j)) {
+						result[1] = N[i] - j;
+					}
+				}
 			}
 
 			else if (j % 2 != 0) {
@@ -31,16 +42,28 @@ int main()
 						break;
 					}
 
-					n += 2;
+					n++;
 
 					if (n > sqrt(j)) {
-						result++;
-						N[j] = 1;
+						result[0] = j;
+						n = 2;
+
+						while (n <= sqrt(N[i] - j)) {
+							if (N[i] - j % n == 0) {
+								break;
+							}
+
+							n++;
+
+							if (n > sqrt(N[i] - j)) {
+								result[1] = N[i] - j;
+							}
+						}
 					}
 				}
 			}
 		}
 
-		cout << result << endl;
+		cout << result[0] << " " << result[1] << "\n";
 	}
 }

@@ -22,16 +22,24 @@ int main()
 
 			if (j != 1 && j == 2 || j == 3 || j == 5 || j == 7) {
 				result[0] = j;
+
+				if (N[i] - j == 2 || N[i] - j == 3 || N[i] - j == 5 || N[i] - j == 7) {
+					result[1] = N[i] - j;
+					break;
+				}
 				
-				while (n <= sqrt(N[i] - j)) {
-					if (N[i] - j % n == 0) {
-						break;
-					}
+				else {
+					while (n <= sqrt(N[i] - j)) {
+						if (N[i] - j % n == 0) {
+							break;
+						}
 
-					n++;
+						n++;
 
-					if (n > sqrt(N[i] - j)) {
-						result[1] = N[i] - j;
+						if (n > sqrt(N[i] - j)) {
+							result[1] = N[i] - j;
+							break;
+						}
 					}
 				}
 			}

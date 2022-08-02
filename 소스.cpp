@@ -17,59 +17,49 @@ int main()
 	int result[2]{};
 
 	for (int i{}; i < T; ++i) {
-		for (int j = 2; j < N[i]; ++j) {
-			if (result[1] == 0) {
-				int n = 2;
+		int n = 3;
 
-				if (j != 1 && j == 2 || j == 3 || j == 5 || j == 7) {
-					result[0] = j;
+		if ((N[i] / 2) % 2 != 0 || N[i] / 2 == 2) {
+			result[0] = N[i] / 2;
+		}
 
-					if (N[i] - j == 2 || N[i] - j == 3 || N[i] - j == 5 || N[i] - j == 7) {
-						result[1] = N[i] - j;
+		else {
+			result[0] = N[i] / 2 - 1;
+		}
+
+		while (n <= sqrt(result[0])) {
+			if ((result[0]) % n == 0) {
+				result[0] -= 2;
+				break;
+			}
+
+			n += 2;
+		}
+
+		while (result[1] == 0) {
+			n = 3;
+
+			if (N[i] - result[0] == 2 || N[i] - result[0] == 3 || N[i] - result[0] == 5 || N[i] - result[0] == 7) {
+				result[1] = N[i] - result[0];
+				break;
+			}
+			
+			else if (N[i] - result[0] % 2 != 0) {
+				while (n <= sqrt(N[i] - result[0])) {
+					if ((N[i] - result[0]) % n == 0) {
 						break;
 					}
 
-					else {
-						while (n <= sqrt(N[i] - j)) {
-							if ((N[i] - j) % n == 0) {
-								break;
-							}
+					n += 2;
 
-							n++;
-
-							if (n > sqrt(N[i] - j)) {
-								result[1] = N[i] - j;
-							}
-						}
+					if (n > sqrt(N[i] - result[0])) {
+						result[1] = N[i] - result[0];
 					}
 				}
+			}
 
-				else if (j % 2 != 0) {
-					while (n <= sqrt(j)) {
-						if (j % n == 0) {
-							break;
-						}
-
-						n++;
-
-						if (n > sqrt(j)) {
-							result[0] = j;
-							n = 2;
-
-							while (n <= sqrt(N[i] - j)) {
-								if (N[i] - j % n == 0) {
-									break;
-								}
-
-								n++;
-
-								if (n > sqrt(N[i] - j)) {
-									result[1] = N[i] - j;
-								}
-							}
-						}
-					}
-				}
+			if (result[1] == 0) {
+				result[0] -= 2;
 			}
 		}
 

@@ -15,6 +15,7 @@ int main()
 	}
 
 	int result[2]{};
+	int clear{};
 
 	for (int i{}; i < T; ++i) {
 		int n = 3;
@@ -27,16 +28,38 @@ int main()
 			result[0] = N[i] / 2 - 1;
 		}
 
-		while (n <= sqrt(result[0])) {
-			if ((result[0]) % n == 0) {
-				result[0] -= 2;
-				break;
+		while (result[1] == 0) {
+			n = 3;
+
+			while (clear == 0) {
+				n = 3;
+
+				while (1) {
+					if (result[0] == 2 || result[0] == 3 || result[0] == 5 || result[0] == 7) {
+						clear = 1;
+						break;
+					}
+
+					else if (result[0] % 2 != 0) {
+						while (n <= sqrt(result[0])) {
+							if ((result[0]) % n == 0) {
+								result[0] -= 2;
+								break;
+							}
+
+							n += 2;
+
+							if (n > sqrt(result[0])) {
+								clear = 1;
+								break;
+							}
+						}
+					}
+				}
 			}
 
-			n += 2;
-		}
+			clear = 0;
 
-		while (result[1] == 0) {
 			n = 3;
 
 			if (N[i] - result[0] == 2 || N[i] - result[0] == 3 || N[i] - result[0] == 5 || N[i] - result[0] == 7) {

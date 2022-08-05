@@ -7,6 +7,8 @@ int main()
 {
 	int T{};
 	int N[10000]{};
+	int S[10000]{};
+	int count{};
 
 	cin >> T;
 	
@@ -15,11 +17,44 @@ int main()
 	}
 
 	int result[2]{};
-	int clear{};
+	int num = 2;
 
-	for (int i{}; i < T; ++i) {
+	while (num <= 10000) {
 		int n = 3;
 
+		if (num == 2 || num == 3 || num == 5 || num == 7) {
+			S[count] = num;
+			
+			if (num == 2) {
+				num++;
+			}
+
+			else {
+				num += 2;
+			}
+
+			count++;
+		}
+
+		else if (num % 2 != 0) {
+			while (n <= sqrt(num)) {
+				if (num % n == 0) {
+					num += 2;
+					break;
+				}
+
+				n += 2;
+
+				if (n > sqrt(num)) {
+					S[count] = num;
+					num += 2;
+					count++;
+				}
+			}
+		}
+	}
+
+	for (int i{}; i < T; ++i) {
 		if ((N[i] / 2) % 2 != 0 || N[i] / 2 == 2) {
 			result[0] = N[i] / 2;
 		}
@@ -29,55 +64,27 @@ int main()
 		}
 
 		while (result[1] == 0) {
-			n = 3;
+			num = 0;
 
-			while (clear == 0) {
-				n = 3;
+			while (1) {
+				if (result[0] == S[num]) {
+					break;
+				}
 
-				while (1) {
-					if (result[0] == 2 || result[0] == 3 || result[0] == 5 || result[0] == 7) {
-						clear = 1;
-						break;
-					}
+				else if (S[num] < result[0]) {
+					num++;
+				}
 
-					else if (result[0] % 2 != 0) {
-						while (n <= sqrt(result[0])) {
-							if ((result[0]) % n == 0) {
-								result[0] -= 2;
-								break;
-							}
-
-							n += 2;
-
-							if (n > sqrt(result[0])) {
-								clear = 1;
-								break;
-							}
-						}
-					}
+				else {
+					result[0] -= 2;
+					num = 0;
 				}
 			}
 
-			clear = 0;
-
-			n = 3;
-
-			if (N[i] - result[0] == 2 || N[i] - result[0] == 3 || N[i] - result[0] == 5 || N[i] - result[0] == 7) {
-				result[1] = N[i] - result[0];
-				break;
-			}
-			
-			else if (N[i] - result[0] % 2 != 0) {
-				while (n <= sqrt(N[i] - result[0])) {
-					if ((N[i] - result[0]) % n == 0) {
-						break;
-					}
-
-					n += 2;
-
-					if (n > sqrt(N[i] - result[0])) {
-						result[1] = N[i] - result[0];
-					}
+			for (int j{}; j < count; ++j) {
+				if (N[i] - result[0] == S[j]) {
+					result[1] = N[i] - result[0];
+					break;
 				}
 			}
 

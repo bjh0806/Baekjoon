@@ -2,24 +2,13 @@
 
 using namespace std;
 
-void factorial(int n, int result = 1) {
-	if (n != 0) {
-		result *= n;
-	}
-
-	if (n - 1 > 1) {
-		factorial(n - 1, result);
-	}
-
-	else {
-		cout << result << endl;
-	}
-}
-
 int main()
 {
-	int N{};
-	cin >> N;
+	int n[6] = { 1,1,2,2,2,8 };
+	int num[6]{};
 
-	factorial(N);
+	for (int i{}; i < 6; ++i) {
+		cin >> num[i];
+		cout << n[i] - num[i] << " ";
+	}
 }

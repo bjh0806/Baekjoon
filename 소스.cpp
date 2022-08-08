@@ -4,11 +4,24 @@ using namespace std;
 
 int main()
 {
-	int n[6] = { 1,1,2,2,2,8 };
-	int num[6]{};
+	int X{};
+	int N{};
+	int a[100]{};
+	int b[100]{};
+	int result{};
 
-	for (int i{}; i < 6; ++i) {
-		cin >> num[i];
-		cout << n[i] - num[i] << " ";
+	cin >> X >> N;
+
+	for (int i{}; i < N; ++i) {
+		cin >> a[i] >> b[i];
+		result += a[i] * b[i];
+	}
+
+	if (result == X) {
+		cout << "Yes" << endl;
+	}
+
+	else {
+		cout << "No" << endl;
 	}
 }

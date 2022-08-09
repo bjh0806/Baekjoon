@@ -2,26 +2,25 @@
 
 using namespace std;
 
-int main()
+int fibonacci(int n)
 {
-	int X{};
-	int N{};
-	int a[100]{};
-	int b[100]{};
-	int result{};
-
-	cin >> X >> N;
-
-	for (int i{}; i < N; ++i) {
-		cin >> a[i] >> b[i];
-		result += a[i] * b[i];
+	if (n == 0) {
+		return 0;
 	}
 
-	if (result == X) {
-		cout << "Yes" << endl;
+	else if (n == 1) {
+		return 1;
 	}
 
 	else {
-		cout << "No" << endl;
+		return fibonacci(n - 1) + fibonacci(n - 2);
 	}
+}
+
+int main()
+{
+	int n{};
+	cin >> n;
+
+	cout << fibonacci(n) << endl;
 }

@@ -11,15 +11,7 @@ void Recursion(int n)
 	cout << endl;
 
 	for (int i{}; i < n / 3; ++i) {
-		cout << "*";
-	}
-
-	for (int i{}; i < n / 3; ++i) {
-		cout << " ";
-	}
-
-	for (int i{}; i < n / 3; ++i) {
-		cout << "*";
+		cout << "* *";
 	}
 
 	cout << endl;
@@ -29,10 +21,6 @@ void Recursion(int n)
 	}
 
 	cout << endl;
-
-	if (n - 3 != 0) {
-		Recursion(n - 3);
-	}
 }
 
 int main()

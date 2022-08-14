@@ -4,23 +4,24 @@ using namespace std;
 
 void Recursion(int n)
 {
-	for (int i{}; i < n; ++i) {
-		cout << "*";
+	string star[3]{};
+	string bigstar[3]{};
+
+	if (n == 3) {
+		star[0] = "***";
+		star[1] = "* *";
+		star[2] = "***";
 	}
 
-	cout << endl;
-
-	for (int i{}; i < n / 3; ++i) {
-		cout << "* *";
+	else {
+		bigstar[0];
 	}
 
-	cout << endl;
-
-	for (int i{}; i < n; ++i) {
-		cout << "*";
+	if (n == 3) {
+		for (int i{}; i < n; ++i) {
+			cout << star[i] << endl;
+		}
 	}
-
-	cout << endl;
 }
 
 int main()

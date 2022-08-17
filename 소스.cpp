@@ -40,14 +40,14 @@ void Recursion(int x, int y, int n, int N)
 	}
 
 	else {
-		for (int i{}; i <= N; i += 3) {
-			for (int j{}; j <= N; j += 3) {
-				if (i == j && i == 3) {
-					recursion(i, j, 3, N);
+		for (int i{}; i <= N / 3; ++i) {
+			for (int j{}; j <= N / 3; ++j) {
+				if (i % 3 == j % 3 && i % 3 == 1) {
+					recursion(i * 3, j * 3, n / 3, N);
 				}
 
 				else {
-					Recursion(i, j, 3, N);
+					Recursion(i * 3, j * 3, n / 3, N);
 				}
 			}
 

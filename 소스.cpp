@@ -6,8 +6,8 @@ string star[2188][2188]{};
 
 void recursion(int x, int y, int n, int N)
 {
-	for (int i = x; i < x + 3; ++i) {
-		for (int j = y; j < y + 3; ++j) {
+	for (int i = x; i < x + N / 3; ++i) {
+		for (int j = y; j < y + N / 3; ++j) {
 			star[i][j] = " ";
 		}
 	}
@@ -43,7 +43,13 @@ void Recursion(int x, int y, int n, int N)
 		for (int i{}; i <= N / 3; ++i) {
 			for (int j{}; j <= N / 3; ++j) {
 				if (i % 3 == j % 3 && i % 3 == 1) {
-					recursion(i * 3, j * 3, n / 3, N);
+					if (i / 3 == 1) {
+						recursion(i * 3, j * 3, n, N);
+					}
+
+					else {
+						recursion(i * 3, j * 3, n / 3, N);
+					}
 				}
 
 				else {

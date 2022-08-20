@@ -43,13 +43,7 @@ void Recursion(int x, int y, int n, int N)
 		for (int i{}; i <= N / 3; ++i) {
 			for (int j{}; j <= N / 3; ++j) {
 				if (i % 3 == j % 3 && i % 3 == 1) {
-					if (i / 3 == 1) {
-						recursion(i * 3, j * 3, n, N);
-					}
-
-					else {
-						recursion(i * 3, j * 3, n / 3, N);
-					}
+					recursion(i * 3, j * 3, n / 3, N);
 				}
 
 				else {

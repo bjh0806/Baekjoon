@@ -40,8 +40,6 @@ void Recursion(int x, int y, int n, int N)
 	}
 
 	else {
-		// for문을 돌릴 때 N / 3이 아닌 9등분이 되도록 고쳐야 함
-		// 빈칸이 생기는 조건 수정
 		for (int i{}; i <= N / 3; ++i) {
 			for (int j{}; j <= N / 3; ++j) {
 				if (i % 3 == j % 3 && i % 3 == 1) {

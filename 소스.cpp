@@ -42,13 +42,25 @@ void Recursion(int x, int y, int n, int N)
 	else {
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
-				if (i % 3 == j % 3 && i % 3 == 1) {
+				if (i == 1 && j == 1) {
 					recursion(i * N / 3, j * N / 3, n / 3, N);
+				}
+
+				else if (i % 3 == j % 3 && i % 3 == 1) {
+					recursion(i * n / 3, j * n / 3, n / 3, N);
 				}
 
 				else {
 					Recursion(i * N / 3, j * N / 3, n / 3, N);
 				}
+
+				/*if (i % 3 == j % 3 && i % 3 == 1) {
+					recursion(i * N / 3, j * N / 3, n / 3, N);
+				}
+
+				else {
+					Recursion(i * N / 3, j * N / 3, n / 3, N);
+				}*/
 			}
 
 			cout << endl;

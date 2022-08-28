@@ -46,9 +46,9 @@ void Recursion(int x, int y, int n, int N)
 					recursion(i * N / 3, j * N / 3, n / 3, N);
 				}
 
-				else if (i % 3 == j % 3 && i % 3 == 1) {
+				/*else if (i % 3 == j % 3 && i % 3 == 1) {
 					recursion(i * n / 3, j * n / 3, n / 3, N);
-				}
+				}*/
 
 				else {
 					Recursion(i * N / 3, j * N / 3, n / 3, N);

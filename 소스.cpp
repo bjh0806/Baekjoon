@@ -53,14 +53,6 @@ void Recursion(int x, int y, int n, int N)
 				else {
 					Recursion(i * N / 3, j * N / 3, n / 3, N);
 				}
-
-				/*if (i % 3 == j % 3 && i % 3 == 1) {
-					recursion(i * N / 3, j * N / 3, n / 3, N);
-				}
-
-				else {
-					Recursion(i * N / 3, j * N / 3, n / 3, N);
-				}*/
 			}
 
 			cout << endl;

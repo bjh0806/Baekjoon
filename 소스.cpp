@@ -13,6 +13,8 @@ void recursion(int x, int y, int n, int N)
 	}
 }
 
+// 새로운 빈칸 함수 만들기
+
 void Recursion(int x, int y, int n, int N)
 {
 	if (n == 3) {

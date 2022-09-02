@@ -13,7 +13,14 @@ void recursion(int x, int y, int n, int N)
 	}
 }
 
-// 새로운 빈칸 함수 만들기
+void s_recursion(int x, int y, int n, int N)
+{
+	for (int i = x; i < x + 1; ++i) {
+		for (int j = y; j < y + 1; ++j) {
+			star[i][j] = " ";
+		}
+	}
+}
 
 void Recursion(int x, int y, int n, int N)
 {

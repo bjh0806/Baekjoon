@@ -52,7 +52,7 @@ void Recursion(int x, int y, int n, int N)
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
 				if (i == 1 && j == 1) {
-					if (n == N / 3) {
+					if (n == N) {
 						recursion(i * n / 3, j * n / 3, n / 3, N);
 					}
 

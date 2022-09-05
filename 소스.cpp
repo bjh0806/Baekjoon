@@ -15,8 +15,8 @@ void recursion(int x, int y, int n, int N)
 
 void s_recursion(int x, int y, int n, int N)
 {
-	for (int i = x; i < x + 1; ++i) {
-		for (int j = y; j < y + 1; ++j) {
+	for (int i = x; i < x + 3; ++i) {
+		for (int j = y; j < y + 3; ++j) {
 			star[i][j] = " ";
 		}
 	}

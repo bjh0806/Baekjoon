@@ -49,6 +49,7 @@ void Recursion(int x, int y, int n, int N)
 	}
 
 	else {
+		// 중앙 빈칸 생기는 기준 for문 재확인
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
 				if (i == 1 && j == 1) {

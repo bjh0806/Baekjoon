@@ -60,6 +60,7 @@ void Recursion(int x, int y, int n, int N)
 
 					else {
 						// 이 부분 확인
+						// count 변수 응용?
 						s_recursion(i * n / 3, j * n / 3, n / 3, N);
 					}
 				}

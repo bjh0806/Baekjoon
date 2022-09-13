@@ -51,6 +51,7 @@ void Recursion(int x, int y, int n, int N)
 	else {
 		// 중앙 빈칸 생기는 기준 for문 재확인
 		// x, y에 들어갈 값에 특정 값을 곱해줄 것
+		// 매번 같은 공간에만 빈칸이 생김
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
 				if (i == 1 && j == 1) {

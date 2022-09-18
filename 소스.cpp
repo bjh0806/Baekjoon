@@ -3,6 +3,8 @@
 using namespace std;
 
 string star[2188][2188]{};
+int x{};
+int y{};
 
 void recursion(int x, int y, int n, int N)
 {
@@ -55,6 +57,11 @@ void Recursion(int x, int y, int n, int N)
 		// 항상 i, j가 1이 되므로 발생하는 결과 -> 전체 칸에서 몇 번째 칸인지 저장하는 변수 필요
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
+				if (n == N) {
+					x = i;
+					y = j;
+				}
+
 				if (i == 1 && j == 1) {
 					if (n == N) {
 						recursion(i * n / 3, j * n / 3, n / 3, N);

@@ -64,6 +64,7 @@ void Recursion(int x, int y, int n, int N)
 
 				if (i == 1 && j == 1) {
 					if (n == N) {
+						// recursion(x * n / 3, y * n / 3, n / 3, N);
 						recursion(i * n / 3, j * n / 3, n / 3, N);
 					}
 

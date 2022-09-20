@@ -57,6 +57,7 @@ void Recursion(int x, int y, int n, int N)
 		// 항상 i, j가 1이 되므로 발생하는 결과 -> 전체 칸에서 몇 번째 칸인지 저장하는 변수 필요
 		for (int i{}; i <= 3; ++i) {
 			for (int j{}; j <= 3; ++j) {
+				// 아래 if문 자리를 옮겨야 하는지 확인
 				if (n == N) {
 					x = i;
 					y = j;

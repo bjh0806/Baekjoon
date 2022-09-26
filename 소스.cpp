@@ -55,6 +55,9 @@ void Recursion(int x, int y, int n, int N)
 		// x, y에 들어갈 값에 특정 값을 곱해줄 것
 		// 매번 같은 공간에만 빈칸이 생김 (첫 번째 칸)
 		// 항상 i, j가 1이 되므로 발생하는 결과 -> 전체 칸에서 몇 번째 칸인지 저장하는 변수 필요
+		x = 1;
+		y = 1;
+
 		for (int i{}; i < 3; ++i) {
 			for (int j{}; j < 3; ++j) {
 				if (i == 1 && j == 1) {
@@ -63,14 +66,20 @@ void Recursion(int x, int y, int n, int N)
 					}
 
 					else {
+						if (x / 3 < 2) {
+							y += 3;
+						}
+
+						else {
+							x += 3;
+							y = 1;
+						}
+
 						s_recursion(x * n / 3, y * n / 3, n / 3, N);
 					}
 				}
 
 				else {
-					x = i;
-					y = j;
-
 					Recursion(i * N / 3, j * N / 3, n / 3, N);
 				}
 			}

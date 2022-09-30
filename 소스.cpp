@@ -66,7 +66,7 @@ void Recursion(int x, int y, int n, int N)
 					}
 
 					else {
-						if (x / 3 < 2) {
+						if ((x / 3) < 2) {
 							y += 3;
 						}
 
